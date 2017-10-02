@@ -1,0 +1,23 @@
+set serveroutput on;
+
+DECLARE
+
+    
+    W_NOMBRE_JAIIO VARCHAR2(50);
+    W_APELLIDO_JAIIO VARCHAR2(50);
+    W_DNI_JAIIO INT;
+BEGIN 
+    FOR C IN (SELECT * FROM JAIIO) LOOP
+        --rescatamos los datos en las variables
+        W_NOMBRE_JAIIO := C.NOMBRE;
+        W_APELLIDO_JAIIO := C.APELLIDO;
+        W_DNI_JAIIO      := C.DNI;
+        
+        --HACEMOS EL INSERT A LA TABLA PERSONAJAIIO
+        
+        INSERT INTO PERSONAJAIIO (ID_PERSONA,NOMBRE,APELLIDO,DNI) VALUES (-1,W_NOMBRE_JAIIO,W_APELLIDO_JAIIO,W_DNI_JAIIO); 
+        
+    END LOOP;
+END;
+
+
